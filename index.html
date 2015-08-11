@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>A starry foxy night</title>
+</head>
+<body>
+
+</body>
+
+<script type="text/javascript" src="js/require.js"></script>
+<script type="text/javascript">
+    requirejs.onError = function(error){
+        console.log('Error of type: "' + error.requireType + '"\n\nRequireJS could not load ' + error.requireModules + error.message);
+    };
+    //require.config( {baseUrl:'js/lib'});
+
+    require(['js/requireConfig'], function(){
+        require(['starryFoxy'], function(tripPlanner){
+            tripPlanner.initialize();
+        });
+    });
+
+</script>
+
+</html>
