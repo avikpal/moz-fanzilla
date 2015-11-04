@@ -5,6 +5,7 @@ define(['view/mozFanView'],
 
         var initialize = function() {
             this.fanView = new fanView();
+            this.fanView.initialize();
             this.fanView.getFollowersList();
         };
 

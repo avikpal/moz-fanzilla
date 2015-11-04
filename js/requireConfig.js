@@ -8,7 +8,8 @@ require.config(
             backbone: 'lib/backbone-min',
             async:'lib/async',
             handlebars: 'lib/handlebars-v3.0.3',
-            text:'lib/text'
+            text:'lib/text',
+            cytoscape:'lib/cytoscape.min'
         },
 
         shim: {
