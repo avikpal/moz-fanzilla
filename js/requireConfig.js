@@ -9,7 +9,7 @@ require.config(
             async:'lib/async',
             handlebars: 'lib/handlebars-v3.0.3',
             text:'lib/text',
-            cytoscape:'lib/cytoscape.min'
+            cytoscape:'lib/cytoscape'
         },
 
         shim: {
