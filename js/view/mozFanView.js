@@ -13,13 +13,13 @@ define(['jquery',
         var start, end;
         var $body = $('body');
 
-        var initCytoScape = function(){
-            var loading = $("#loading");
+        function initCytoScape() {
+            var loading = $('#loading');
 
             loading.addClass('loaded');
 
             cy = cytoscape({
-                container:$("#cy"),
+                container:$('#cy'),
                 layout:{ name: 'preset'},
                 style: style,
                 elements: followersList,
@@ -30,9 +30,9 @@ define(['jquery',
 
             mendData();
             bindRouters();
-        };
+        }
 
-        var mendData = function(){
+        function mendData() {
             cy.startBatch();
 
             // put nodes in bins based on name
@@ -75,9 +75,9 @@ define(['jquery',
             }
 
             cy.endBatch();
-        };
+        }
 
-        var selectStart = function( node ){
+        function selectStart() {
             clear();
 
             $body.addClass('has-start');
@@ -85,9 +85,9 @@ define(['jquery',
             start = node;
 
             start.addClass('start');
-        };
+        }
 
-        var selectEnd = function( node ){
+        function selectEnd( node ) {
             $body.addClass('has-end calc');
 
             end = node;
@@ -124,14 +124,14 @@ define(['jquery',
 
                 $body.removeClass('calc');
             }, 300);
-        };
+        }
 
-        var clear = function(){
+        function clear() {
             $body.removeClass('has-start has-end');
             cy.elements().removeClass('path not-path start end');
-        };
+        }
 
-        var bindRouters = function(){
+        function bindRouters() {
 
             var $clear = $('#clear');
 
@@ -183,7 +183,7 @@ define(['jquery',
             });
 
             $clear.on('click', clear);
-        };
+        }
 
         return Backbone.View.extend({
 
@@ -216,8 +216,6 @@ define(['jquery',
             getFollowersList: function(){
                 this.model.getFollowersMetaData();
             }
-
-
 
 
         });
