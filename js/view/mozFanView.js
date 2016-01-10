@@ -4,9 +4,9 @@ define(['jquery',
     'cytoscape',
     'model/twitterDataFetchModel',
     'text!../../content/templates/graphView.html',
-    'text!../../content/styles/style.css'
+    'text!../../style.css'
 ],
-    function($,Backbone,_,cytoscape,twitterDataFetchModel,graphViewTemplate,style)
+    function($, Backbone, _, cytoscape, twitterDataFetchModel, graphViewTemplate, style)
     {
 
         var followersList, cy;
@@ -199,7 +199,7 @@ define(['jquery',
             },
 
             renderNow: function(){
-                $("graph-view-container").html(graphViewTemplate);
+                $("#graph-view-container").append(graphViewTemplate);
                 _.defer(initCytoScape());
             },
 
