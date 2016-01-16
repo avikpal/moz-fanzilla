@@ -14,6 +14,50 @@ define(['jquery',
 
         function initCytoScape() {
             //TODO add and implement proper graph drawing algorithm
+            //first set up the elements and edges array
+            var nodes = [], edges = [];
+
+            nodes.push({data: {"id": "followed","name": "mozilla"}});
+            _.forEach(followersList, function(node) {
+                nodes.push({data: {"id":node.screen_name ,"name": node.screen_name}});
+                edges.push({data: {"source": node.screen_name, target: 'followed'}})
+            });
+
+
+            var cy = cytoscape({
+                container: $('#cy'),
+
+                boxSelectionEnabled: false,
+                autounselectify: true,
+
+                style: cytoscape.stylesheet()
+                    .selector('node')
+                    .css({
+                        'content': 'data(name)',
+                        'text-valign': 'center',
+                        'color': 'white',
+                        'text-outline-width': 2,
+                        'text-outline-color': '#888'
+                    })
+                    .selector(':selected')
+                    .css({
+                        'background-color': 'black',
+                        'line-color': 'black',
+                        'target-arrow-color': 'black',
+                        'source-arrow-color': 'black',
+                        'text-outline-color': 'black'
+                    }),
+
+                elements: {
+                    nodes: nodes,
+                    edges: edges
+                },
+
+                layout: {
+                    name: 'grid',
+                    padding: 10
+                }
+            });
         }
 
         return Backbone.View.extend({
